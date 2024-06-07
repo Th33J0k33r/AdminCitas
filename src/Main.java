@@ -1,15 +1,46 @@
+import AdminCitas.*;
+import java.util.HashMap;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    static String[] menuOpt = {"1. Dar de alta doctores", "2. Dar de alta pacientes", "3. Crear una cita", "5. Salir"};
+    static String myUser = "admin";
+    static String myPassword = "admin321";
+    static HashMap<String, Medico> medicos = new HashMap<String, Medico>();
+    static HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
+    static HashMap<String, Cita> citas = new HashMap<String, Cita>();
+    int selectedOpt;
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.printf("Bienvenido al sistema de administracion de consultas");
+        String iUser = "";
+        String iPass = "";
+        while (iUser != myUser && iPass != myPassword) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Ingresa tu usuario:");
+            iUser = sc.nextLine();
+            System.out.println("Ingresa tu password:");
+            iPass = sc.nextLine();
+            if (iUser != myUser && iPass != myPassword) {
+                System.out.println("Credenciales incorrectas, intente de nuevo");
+            }
+        }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("Por favor selecciona una opcion: ");
+        printMenu();
+        Scanner sc = new Scanner(System.in);
+        int selectedOpt = 0;
+        while (selectedOpt != 5) {
+            selectedOpt = sc.nextInt();
+            switch (selectedOpt) {
+                case 1:
+            }
+        }
+    }
+    public static void printMenu () {
+        for (int i = 0; i <= 3; i++) {
+            System.out.println(menuOpt[i]);
         }
     }
 }
