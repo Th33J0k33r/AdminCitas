@@ -1,6 +1,10 @@
 import AdminCitas.*;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import static AdminCitas.Medico.altaMedico;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,11 +16,11 @@ public class Main {
     static HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
     static HashMap<String, Cita> citas = new HashMap<String, Cita>();
     int selectedOpt;
-    public static void main(String[] args) {
-        System.out.printf("Bienvenido al sistema de administracion de consultas");
+    public static void main(String[] args) throws IOException {
+        System.out.println("Bienvenido al sistema de administracion de consultas");
         String iUser = "";
         String iPass = "";
-        while (iUser != myUser && iPass != myPassword) {
+        while (iUser.equals(myUser)==false || iPass.equals(myPassword)==false) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Ingresa tu usuario:");
             iUser = sc.nextLine();
@@ -35,6 +39,7 @@ public class Main {
             selectedOpt = sc.nextInt();
             switch (selectedOpt) {
                 case 1:
+                altaMedico();
             }
         }
     }

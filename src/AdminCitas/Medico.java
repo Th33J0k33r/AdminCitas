@@ -1,22 +1,18 @@
 package AdminCitas;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Medico {
 
-    String id;
     String nombre;
     String especialidad;
     static String fileName = "Medicos.txt";
     private static HashMap<String,Medico> medicos = new HashMap<String, Medico>();;
 
-    public Medico (String id, String nombre, String especialidad) throws IOException {
-        setId(id);
+    public Medico (String nombre, String especialidad) throws IOException {
         setNombre(nombre);
         setEspecialidad(especialidad);
     }
@@ -29,20 +25,12 @@ public class Medico {
         this.nombre = nombre;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getEspecialidad() {
         return especialidad;
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public static void saveDoctors (){
@@ -53,11 +41,41 @@ public class Medico {
             for (Map.Entry<String, Medico> entry : medicos.entrySet()) {
                 String k = entry.getKey();
                 Medico v = entry.getValue();
-                outF.print(k + ", " + v + "\r");
+                String iNombre = v.getNombre();
+                String iEspecialidad = v.getEspecialidad();
+                outF.print(k + ", " + iNombre + ", " + iEspecialidad + "\r");
                 outF.close();
             }
+
         } catch (IOException e) {
             //exception handling left as an exercise for the reader
+        }
+    }
+
+    public static void altaMedico() throws IOException {
+        load();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el id del medico: ");
+        String iID = sc.nextLine();
+        System.out.println("Ingrese el nombre del medico: ");
+        String iNombre = sc.nextLine();
+        System.out.println("Ingrese la especialidad del medico: ");
+        String iEspecialidad = sc.nextLine();
+        Medico iMed = new Medico (iNombre,iEspecialidad );
+        medicos.put(iID, iMed);
+        saveDoctors();
+    }
+
+    public static void load() throws IOException {
+        FileReader fr =  new FileReader(fileName);
+        BufferedReader br = new BufferedReader (fr);
+        String currLine;
+        while((currLine = br.readLine()) != null){
+            String [] rec = currLine.split(",",0);
+            if (rec.length == 3){
+                Medico iMed = new Medico (rec[1], rec[2]);
+                medicos.put(rec[0], iMed);
+            }
         }
     }
 }
