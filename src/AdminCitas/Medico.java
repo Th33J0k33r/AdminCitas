@@ -52,6 +52,19 @@ public class Medico {
         }
     }
 
+    public static void load() throws IOException {
+        FileReader fr =  new FileReader(fileName);
+        BufferedReader br = new BufferedReader (fr);
+        String currLine;
+        while((currLine = br.readLine()) != null){
+            String [] rec = currLine.split(",",0);
+            if (rec.length == 3){
+                Medico iMed = new Medico (rec[1], rec[2]);
+                medicos.put(rec[0], iMed);
+            }
+        }
+    }
+
     public static void altaMedico() throws IOException {
         load();
         Scanner sc = new Scanner(System.in);
@@ -66,16 +79,10 @@ public class Medico {
         saveDoctors();
     }
 
-    public static void load() throws IOException {
-        FileReader fr =  new FileReader(fileName);
-        BufferedReader br = new BufferedReader (fr);
-        String currLine;
-        while((currLine = br.readLine()) != null){
-            String [] rec = currLine.split(",",0);
-            if (rec.length == 3){
-                Medico iMed = new Medico (rec[1], rec[2]);
-                medicos.put(rec[0], iMed);
-            }
-        }
+    public static HashMap<String,Medico> printDrs() throws IOException {
+        load();
+        System.out.println("Medicos disponibles:");
+        medicos.forEach((k,v) -> System.out.println("Numero: {" + k + "} , Nombre: {" + v.getNombre() + " } , Especialidad: " + v.getEspecialidad() + "}"));
+        return medicos;
     }
 }

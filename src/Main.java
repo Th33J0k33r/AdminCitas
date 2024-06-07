@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import static AdminCitas.Medico.altaMedico;
+import static AdminCitas.Paciente.altaPaciente;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -39,7 +40,11 @@ public class Main {
             selectedOpt = sc.nextInt();
             switch (selectedOpt) {
                 case 1:
-                altaMedico();
+                    altaMedico();
+                break;
+                case 2:
+                    altaPaciente();
+                break;
             }
         }
     }
