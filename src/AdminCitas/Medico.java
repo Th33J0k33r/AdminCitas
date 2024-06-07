@@ -43,7 +43,7 @@ public class Medico {
                 Medico v = entry.getValue();
                 String iNombre = v.getNombre();
                 String iEspecialidad = v.getEspecialidad();
-                outF.print(k + ", " + iNombre + ", " + iEspecialidad + "\r");
+                outF.println(k + ", " + iNombre + ", " + iEspecialidad + "\r");
                 outF.close();
             }
 
@@ -77,6 +77,7 @@ public class Medico {
         Medico iMed = new Medico (iNombre,iEspecialidad );
         medicos.put(iID, iMed);
         saveDoctors();
+        System.out.println("Se dio de alta al medico.");
     }
 
     public static HashMap<String,Medico> printDrs() throws IOException {

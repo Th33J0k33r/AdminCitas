@@ -72,7 +72,7 @@ public class Cita {
                 String iEspDr = v.getMedico().especialidad;
                 String iNombrePac = v.getPaciente().nombre;
                 String iAlergiasPac = v.getPaciente().alergias;
-                outF.print(k + ", " + iFechayHora + ", " + iMotivo + ", " + iNombreDr + ", " + iEspDr + ", " + iNombrePac + ", " +iAlergiasPac  + "\r");
+                outF.println(k + ", " + iFechayHora + ", " + iMotivo + ", " + iNombreDr + ", " + iEspDr + ", " + iNombrePac + ", " +iAlergiasPac  + "\r");
                 outF.close();
             }
 
@@ -122,6 +122,7 @@ public class Cita {
     public static void printCita(String iID) throws IOException {
         load();
         Cita c = citas.get(iID);
+        System.out.println("Se genero la cita:");
         System.out.println("=================================");
         System.out.println("ID: " + iID);
         System.out.println("Fecha/Hora: " + c.getFechaHora());

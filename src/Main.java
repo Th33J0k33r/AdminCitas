@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static AdminCitas.Cita.altaCita;
 import static AdminCitas.Medico.altaMedico;
 import static AdminCitas.Paciente.altaPaciente;
 
@@ -41,10 +42,15 @@ public class Main {
             switch (selectedOpt) {
                 case 1:
                     altaMedico();
+                    printMenu();
                 break;
                 case 2:
                     altaPaciente();
+                    printMenu();
                 break;
+                case 3:
+                    altaCita();
+                    printMenu();
             }
         }
     }

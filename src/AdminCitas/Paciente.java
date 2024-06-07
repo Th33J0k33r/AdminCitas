@@ -76,6 +76,7 @@ public class Paciente {
         Paciente iPac = new Paciente (iNombre,iAlergia );
         pacientes.put(iID, iPac);
         savePacientes();
+        System.out.println("Se dio de alta al Paciente.");
     }
 
     public static HashMap<String,Paciente> printPac() throws IOException {
